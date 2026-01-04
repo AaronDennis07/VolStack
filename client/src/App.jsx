@@ -23,7 +23,7 @@ function App() {
             <div className="bg-blue-600 p-1.5 rounded-lg">
               <LineChart size={20} className="text-white" />
             </div>
-            <span className="font-bold text-xl tracking-tight">NIFTY <span className="text-blue-500">AI</span></span>
+            <span className="font-bold text-xl tracking-tight">VolStack</span>
           </div>
           
           <div className="flex bg-slate-800 rounded-lg p-1 gap-1">
