@@ -256,8 +256,8 @@ def get_latest_garch(df):
 def get_strategy_output(pred_vol, bull_prob, current_vix, spot, trade_date):
     # Regimes
     vol_ratio = pred_vol / (current_vix / 100)
-    if vol_ratio > 1.15: vreg = "RISING_VOL"
-    elif vol_ratio < 0.85: vreg = "FALLING_VOL"
+    if vol_ratio > 1.0: vreg = "RISING_VOL"
+    elif vol_ratio < 0.8: vreg = "FALLING_VOL"
     else: vreg = "NEUTRAL_VOL"
 
     if bull_prob > 0.6: dreg = "BULLISH"

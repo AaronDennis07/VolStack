@@ -1,12 +1,10 @@
 import axios from 'axios';
 
-const API_BASE = import.meta.env.VITE_API_BASE_URL;
+const API_BASE = 'http://localhost:9000';
 
 export const api = axios.create({
   baseURL: API_BASE,
-  headers: {
-    'Content-Type': 'application/json',
-  },
+  headers: { 'Content-Type': 'application/json' },
 });
 
 export const getPrediction = async () => {
@@ -14,11 +12,16 @@ export const getPrediction = async () => {
   return response.data;
 };
 
-export const feedNifty = async (data) => {
-  // Wrap single object in array as expected by backend
-  return await api.post('/feed/nifty', [data]);
+// --- NEW DATA FETCHING FUNCTIONS ---
+export const getNiftyHistory = async (days = 30) => {
+  const response = await api.get(`/data/nifty?days=${days}`);
+  return response.data;
 };
 
-export const feedVix = async (data) => {
-  return await api.post('/feed/vix', [data]);
+export const getVixHistory = async (days = 30) => {
+  const response = await api.get(`/data/vix?days=${days}`);
+  return response.data;
 };
+
+export const feedNifty = async (data) => api.post('/feed/nifty', [data]);
+export const feedVix = async (data) => api.post('/feed/vix', [data]);
